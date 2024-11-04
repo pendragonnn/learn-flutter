@@ -1,52 +1,49 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/widgets/KotakWarna.dart';
 
 void main() {
-  runApp(MyApp4());
+  runApp(MyApp5());
 }
 
-class MyApp4 extends StatelessWidget {
-  // List of Widget
-  // List<KotakWarna> allItems = List.generate(
-  //     10,
-  //     (index) => KotakWarna(
-  //         text: "Kotak - ${index + 1}",
-  //         warna: Color.fromARGB(255, Random().nextInt(256),
-  //             Random().nextInt(256), Random().nextInt(256))));
+class MyApp5 extends StatelessWidget {
+  MyApp5({super.key});
 
-  // menggunakan data
-  List<Map<String, dynamic>> data = List.generate(
-      10,
-      (index) => {
-            "text": "Kotak - ${index + 1}",
-            "color": Color.fromARGB(255, Random().nextInt(256),
-                Random().nextInt(256), Random().nextInt(256))
-          });
+  // List<Map<String, dynamic>> data = List.generate(
+  //     10,
+  //     (index) => {
+  //           "text": "Kotak - ${index + 1}",
+  //           "color": Color.fromARGB(255, Random().nextInt(256),
+  //               Random().nextInt(256), Random().nextInt(256))
+  //         });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.orange,
-            title: const Center(
-              child: Text("Mapping Collection"),
-            )),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            // pemanggilan list of widget
-            // children: allItems,
-
-            // pemanggilan menggunakan data
-            // cara mengubah data ke bentuk widget dengan menggunakan .toList()
-            children: data
-                .map((e) => KotakWarna(text: e["text"], warna: e["color"]))
-                .toList(),
+          backgroundColor: Colors.green,
+          title: Center(
+            child: Text("Widget Builder"),
           ),
         ),
+        // menggunakan list view builder
+        // body: ListView.builder(
+        //     // pembatasan jumlah item
+        //     itemCount: 30,
+        //     itemBuilder: (context, index) => KotakWarna(
+        //         text: "kotak ke ${index + 1}",
+        //         warna: Color.fromARGB(255, Random().nextInt(256),
+        //             Random().nextInt(256), Random().nextInt(256)))),
+        body: GridView.builder(
+            itemCount: 50,
+            padding: EdgeInsets.all(10),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5, mainAxisSpacing: 10, crossAxisSpacing: 10),
+            itemBuilder: (context, index) => Container(
+                  color: Color.fromARGB(255, Random().nextInt(256),
+                      Random().nextInt(256), Random().nextInt(256)),
+                )),
       ),
     );
   }
