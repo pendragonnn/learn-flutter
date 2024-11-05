@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_flutter/ExtractWidget.dart';
 import 'package:learn_flutter/MappingCollection.dart';
-import 'package:learn_flutter/main.dart';
-import 'package:learn_flutter/main.dart2';
+import 'package:learn_flutter/WidgetBuilder.dart';
+
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
